@@ -99,6 +99,9 @@ class IpCam
             $imageOrig->cropImage($zone[0], $zone[1], $zone[2], $zone[3]);
             $imageCheck->cropImage($zone[0], $zone[1], $zone[2], $zone[3]);
 
+            @unlink('/home/xsoft/ipcam/www/img/tmp/id_' . $zoneId . '.jpg');
+            $imageOrig->writeImage('/home/xsoft/ipcam/www/img/tmp/id_' . $zoneId . '.jpg');
+
             $result = $imageOrig->compareImages($imageCheck, 9);
             $checkResult[$zoneId] = $result[1];
 
